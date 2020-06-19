@@ -116,6 +116,16 @@ public: // initialize the class by creating a doc.
         else but.SetLabel("Start");
       }, "Start", "toggle");
 
+    // Add a button to be used to opening a settings bar for 
+    doc << "<br>";
+    doc.AddButton([this](){
+        ToggleActive();
+        auto settingsButton = doc.Button("toggle");
+        if (GetActive()) settingButton.SetLabel("ok go ahead");
+        else settingButton.setLabel("unselected");
+     }, "Start", "toggle");
+      
+
     //doc << UI::Text("fps") << "FPS = " << UI::Live( [this](){return 1000.0 / GetStepTime();} ) ;
     doc << UI::Text("genome") << "Update = " << UI::Live( [this](){ return curr_update; } );
   }
@@ -132,6 +142,8 @@ public: // initialize the class by creating a doc.
             }
         }
   }
+
+
 
     void mutate(){
         for (int i = 0; i < p.size(); i++){
